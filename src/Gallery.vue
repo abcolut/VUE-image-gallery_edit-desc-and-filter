@@ -8,7 +8,7 @@
     <newImage @newImage="newImage"></newImage>
     
     <hr>
-
+    <h2>Галллерея</h2>
     <div v-for="flagShow,i of doGalleryWidthFilter()" class="element"> 
         <picDesc v-if=" flagShow > -1 "
             :desc="gallery[i].desc"
@@ -18,7 +18,6 @@
         > </picDesc>
     </div>
 <hr>
-<p>Описание задания и работы алгоритма:</p>
 
 <h3> Приложение  "Галлерея" </h3>
 <p>Должна быть возможность добавить новое изображение в галерею. По нажатию на кнопку выбираем файл, далее указываем название картинки. После чего он добавляется в галерею и картинка сразу рендерится. (На сервер картинка не выгружается)</p>
@@ -36,7 +35,6 @@
     import picDesc from "./Desc.vue";
 	export default {
         components:{newImage, picDesc }, 
-
         data () {
             return{
                 gallery:[],
@@ -48,13 +46,13 @@
             doGalleryWidthFilter(){
                 var filtr_ = this.filtr               
                 var res =[]
+                var count =0
                 for (var i=0; i< this.gallery.length; i++){
                     var flag = this.gallery[i].desc.indexOf(this.filtr)
-                    //if (this.gallery[i].desc.indexOf(this.filtr)!==-1){
-                        res.push(flag)               
-                    //}
+                    res.push(flag)    
+                    if (flag >-1) count++ 
                 }
-                this.count = res.length
+                this.count = count
                 return res
             },
             src(i){ 
