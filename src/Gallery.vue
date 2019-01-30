@@ -63,6 +63,7 @@
             },
             newImage(e){
                 this.gallery.push(e)
+                this.filtr=""
             }
         },	
     }
